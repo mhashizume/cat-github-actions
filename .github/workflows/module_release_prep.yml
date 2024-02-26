@@ -12,14 +12,12 @@ on:
         required: true
         type: "string"
 
-env:
-  BUNDLE_WITHOUT: development:system_tests
-
 jobs:
   release_prep:
     name: "Release prep"
     runs-on: "ubuntu-20.04"
-
+    env:
+      BUNDLE_WITHOUT: development:system_tests
     steps:
 
       - name: "Checkout"
@@ -45,7 +43,7 @@ jobs:
         uses: "ruby/setup-ruby@v1"
         with:
           ruby-version: "3.2"
-          bundler-cache: "true"
+          bundler-cache: true
           bundler: 2.4.22
 
       - name: "bundle environment"
